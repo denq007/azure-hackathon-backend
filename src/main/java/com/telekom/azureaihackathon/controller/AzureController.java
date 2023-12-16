@@ -75,10 +75,21 @@ public class AzureController {
         return ResponseEntity.ok(azureService.getSimpleAnswerChatGpt(businessRequirements.toString(), role));
     }
 
-    @SneakyThrows
+   /* @SneakyThrows
     @PostMapping(value = "/analyze/uploadFile", consumes = "multipart/form-data")
     public ResponseEntity<String> uploadFile(@RequestBody MultipartFile file) {
         wordParserService.processFiles(file);
+        StringBuilder stringBuilder = new StringBuilder();
+        businessRequirements.forEach(stringBuilder::append);
+        return ResponseEntity.ok(stringBuilder.toString());
+    }*/
+
+    @SneakyThrows
+    @PostMapping(value = "/analyze/uploadFiles", consumes = "multipart/form-data")
+    public ResponseEntity<String> uploadFiles(@RequestParam("files") MultipartFile[] files) {
+        for (MultipartFile file : files) {
+            wordParserService.processFiles(file);
+        }
         StringBuilder stringBuilder = new StringBuilder();
         businessRequirements.forEach(stringBuilder::append);
         return ResponseEntity.ok(stringBuilder.toString());

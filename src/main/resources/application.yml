@@ -1,13 +1,13 @@
 azure:
-    url: ${AZURE_URL}
-    openApiKey: ${OPEN_API_KEY}
-    chatGptVersion: ${CHAT_GPT_VERSION}
+    url: ${AZURE_URL:none}
+    openApiKey: ${OPEN_API_KEY:none}
+    chatGptVersion: ${CHAT_GPT_VERSION:none}
 
 proxy:
-    host: ${PROXY_URL}
+    host: ${PROXY_URL:none}
     port: 8080
     enabled: ${ENABLE_PROXY:false}
 jira:
-    userName: ${JIRA_USER_NAME}
-    password: ${JIRA_PASSWORD}
-    baseUrl: ${JIRA_URL}
+    userName: ${JIRA_USER_NAME:none}
+    password: ${JIRA_PASSWORD:none}
+    baseUrl: ${JIRA_URL:none}
